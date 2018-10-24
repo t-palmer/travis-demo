@@ -2,24 +2,12 @@ language: node_js
 node_js:
   - "9"
 dist: trusty
-addons:
-  chrome: stable # have Travis install Chrome stable.
-sudo: required
+sudo: false
 branches:
   only:
   - master
 before_script:
   - npm install -g @angular/cli
 script:
-  - ng lint
-  - npm run test-headless
-  - npm run e2e
-  - ng build --prod --base-href https://t-palmer.github.io/travis-demo/
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: dist/travis-demo
-  on:
-    branch: master
-    
+- ng lint
+- ng build --prod --base-href https://t-palmer.github.io/travis-demo/
